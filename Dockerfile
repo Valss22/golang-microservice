@@ -1,4 +1,4 @@
-FROM golang:1.20
+FROM golang:1.18
 
 WORKDIR /usr/src/app
 
@@ -8,5 +8,6 @@ RUN go mod download && go mod verify
 
 COPY . .
 RUN go build -v -o /usr/local/bin/app ./...
+RUN chmod +x /usr/local/bin/app
 
-CMD ["app"]
+CMD ["/usr/local/bin/app"]
